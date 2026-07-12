@@ -1,0 +1,21 @@
+{
+  "name": "lemicloud",
+  "version": "1.0.0",
+  "description": "LemiCloud - CDN Storage minimalista con respaldo en GitHub",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.3.0",
+    "file-type": "^19.4.0"
+  },
+  "allowScripts": {
+    "better-sqlite3@11.10.0": true
+  }
+}
