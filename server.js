@@ -132,7 +132,8 @@ try {
 }
 
 function genId() {
-  return crypto.randomBytes(4).toString("hex");
+  const n = crypto.randomBytes(4).readUInt32BE(0);
+  return n.toString(36).padStart(6, "0").slice(-6);
 }
 
 function splitExt(filename) {
@@ -539,7 +540,7 @@ const server = http.createServer(async (req, res) => {
       return sendJson(res, 200, row);
     }
 
-    const proxyMatch = url.pathname.match(/^\/p\/([a-f0-9]+)(?:\/(.+))?$/);
+    const proxyMatch = url.pathname.match(/^\/p\/([a-z0-9]{4,10})(?:\/(.+))?$/);
     if (proxyMatch && req.method === "GET") {
       const id = proxyMatch[1];
       const namePart = proxyMatch[2];

@@ -94,15 +94,13 @@
     els.fileList.innerHTML = files.map(f => {
       const kind = fileKind(f);
       const ext = (f.extension || "?").toUpperCase().slice(0, 4);
-      const short = `/p/${f.id}`;
       return `
         <li class="file-row" data-id="${f.id}">
           <div class="file-row__icon" data-kind="${kind}">${ext}</div>
           <div class="file-row__main">
             <div class="file-row__name">${escapeHtml(f.original_name || f.name)}</div>
-            <div class="file-row__meta">${fmtDate(f.created_at)} · ${fmtSize(f.size)} · ${f.chunks || 1}c</div>
+            <div class="file-row__meta">/p/${f.id} · ${fmtSize(f.size)} · ${f.chunks || 1}c</div>
           </div>
-          <div class="file-row__url">${short}</div>
           <div class="file-row__actions">
             <button class="act act--copy" data-act="copy" title="Copiar URL">
               <svg viewBox="0 0 24 24" width="12" height="12"><rect x="9" y="9" width="11" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M5 15V5a2 2 0 012-2h10" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
